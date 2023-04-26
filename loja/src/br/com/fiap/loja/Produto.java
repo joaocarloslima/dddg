@@ -1,6 +1,6 @@
 package br.com.fiap.loja;
 
-public class Produto { //beans - BO - POJO (plain old java object)
+public abstract class Produto { //beans - BO - POJO (plain old java object)
 	
 	private String nome;
 	private double preco;
@@ -14,8 +14,7 @@ public class Produto { //beans - BO - POJO (plain old java object)
 	
 	@Override
 	public String toString() {
-		String dados = String.format("[%s] %s (%.2f): %s ", 
-				getClass().getSimpleName(),
+		String dados = String.format(" %s (%.2f): %s ", 
 				nome, 
 				preco, 
 				quantidade
@@ -26,12 +25,19 @@ public class Produto { //beans - BO - POJO (plain old java object)
 		return dados;
 	}
 	
-	public double precoMinimo() {
+	public abstract double precoMinimo();
+	
+	
+	public double getPreco() {
 		return preco;
 	}
-	
+
 	public boolean estoqueEstaBaixo() {
 		return quantidade < 5;
+	}
+	
+	public static String getNomeDaLoja() {
+		return "Loja do João";
 	}
 
 }
